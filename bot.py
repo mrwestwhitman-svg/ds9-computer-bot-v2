@@ -193,7 +193,7 @@ async def computer(interaction: discord.Interaction, question: str):
 
         if channel is None or not hasattr(channel, "name"):
         await interaction.response.send_message(
-            "Computer access is not available at this terminal.",
+            "Computer terminal offline. Debug channel name: ...",
             ephemeral=True
         )
         return
