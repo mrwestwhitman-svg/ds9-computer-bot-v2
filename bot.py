@@ -20,9 +20,6 @@ ALLOWED_CHANNELS = [
     "promenade",
     "quarks-bar",
     "habitat-ring",
-    "ops",
-    "infirmary",
-    "security",
     "docking-ring"
 ]
 
