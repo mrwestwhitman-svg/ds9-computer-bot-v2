@@ -17,10 +17,10 @@ MODEL_NAME = "gpt-5-mini"
 HISTORY_CHANCE = 0.15
 
 ALLOWED_CHANNELS = [
-    "promenade",
-    "quarks-bar",
-    "habitat-ring",
-    "holo-suite"
+    "🖖promenade",
+    "🖖quarks-bar",
+    "🖖habitat-ring",
+    "🖖holo-suite"
 ]
 
 RESTRICTED_KEYWORDS = [
