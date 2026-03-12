@@ -197,25 +197,25 @@ async def computer(interaction: discord.Interaction, question: str):
         )
         return
 
-    channel_name = channel.name.lower()
+    channel_name = channel.name.lower().replace("🖖", "")
 
     if channel_name not in ALLOWED_CHANNELS:
         await interaction.followup.send(
-            f"Computer access is not available at this terminal. Debug channel name: {channel_name}",
+            f"Computer access is not available at this terminal. Debug channel name: {channel.name}",
             ephemeral=True
         )
         return
 
-   try:
-    reply = query_ds9_ai(question, channel_name)
-    reply = add_history_note(reply)
-    await interaction.followup.send(reply)
-except Exception as e:
-    print("AI error:", e)
-    await interaction.followup.send(
-        f"Computer debug: {e}",
-        ephemeral=True
-    )
+    try:
+        reply = query_ds9_ai(question, channel_name)
+        reply = add_history_note(reply)
+        await interaction.followup.send(reply)
+    except Exception as e:
+        print("AI error:", e)
+        await interaction.followup.send(
+            f"Computer debug: {e}",
+            ephemeral=True
+        )
 
 # =============================
 # START BOT
