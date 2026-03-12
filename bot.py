@@ -191,7 +191,7 @@ async def computer(interaction: discord.Interaction, question: str):
 
     channel = interaction.channel
 
-    if channel is None or not hasattr(channel, "name"):
+        if channel is None or not hasattr(channel, "name"):
         await interaction.response.send_message(
             "Computer access is not available at this terminal.",
             ephemeral=True
@@ -200,7 +200,7 @@ async def computer(interaction: discord.Interaction, question: str):
 
 channel_name = channel.name.lower()
 
-if channel_name not in ALLOWED_CHANNELS:
+    if channel_name not in ALLOWED_CHANNELS:
     await interaction.response.send_message(
         f"Computer access is not available at this terminal. Debug channel name: {channel_name}",
         ephemeral=True
