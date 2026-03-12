@@ -20,7 +20,7 @@ ALLOWED_CHANNELS = [
     "promenade",
     "quarks-bar",
     "habitat-ring",
-    "docking-ring"
+    "holo-suite"
 ]
 
 RESTRICTED_KEYWORDS = [
