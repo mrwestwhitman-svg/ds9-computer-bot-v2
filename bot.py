@@ -117,7 +117,7 @@ def fallback_response(question: str) -> str:
     if is_restricted(q):
         return random.choice(RESTRICTED_RESPONSES)
 
-    return "Computer: Unable to comply. Please clarify request."
+    return "Computer: Error. Please try again later."
 
 
 def add_history_note(text: str) -> str:
