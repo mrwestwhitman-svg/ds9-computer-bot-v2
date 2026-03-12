@@ -129,30 +129,30 @@ def add_history_note(text: str) -> str:
 
 
 def query_ds9_ai(question: str, channel_name: str) -> str:
-
-    if is_restricted(question):
-        return random.choice(RESTRICTED_RESPONSES)
-
-    prompt = f"""
-Current station terminal location: {channel_name}
-
-User query:
-{question}
-"""
-
     response = client.responses.create(
-        model=MODEL_NAME,
+        model="gpt-4.1-mini",
         input=[
-            {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": prompt}
+            {
+                "role": "system",
+                "content": (
+                    "You are the computer system of Deep Space Nine. "
+                    "Answer briefly, formally, and in-universe. "
+                    "Always begin your answer with 'Computer:'. "
+                    "Keep replies to 1 to 3 sentences."
+                )
+            },
+            {
+                "role": "user",
+                "content": f"Current terminal location: {channel_name}\nUser query: {question}"
+            }
         ],
         max_output_tokens=120
     )
 
-    text = getattr(response, "output_text", "").strip()
+    text = response.output_text.strip()
 
     if not text:
-        return fallback_response(question)
+        raise Exception("OpenAI returned empty output.")
 
     if not text.startswith("Computer:"):
         text = "Computer: " + text
