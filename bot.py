@@ -206,16 +206,16 @@ async def computer(interaction: discord.Interaction, question: str):
         )
         return
 
-    try:
-        reply = query_ds9_ai(question, channel_name)
-        reply = add_history_note(reply)
-        await interaction.followup.send(reply)
-    except Exception as e:
-        print("AI error:", e)
-        await interaction.followup.send(
-            f"Computer error: {e}",
-            ephemeral=True
-        )
+   try:
+    reply = query_ds9_ai(question, channel_name)
+    reply = add_history_note(reply)
+    await interaction.followup.send(reply)
+except Exception as e:
+    print("AI error:", e)
+    await interaction.followup.send(
+        f"Computer debug: {e}",
+        ephemeral=True
+    )
 
 # =============================
 # START BOT
