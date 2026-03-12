@@ -9,8 +9,8 @@ from openai import OpenAI
 # CONFIGURATION
 # =============================
 
-DISCORD_BOT_TOKEN = os.environ["MTQ4MTY3MTkxMjQ1NDM1NzA5NQ.GV439f.IKd6NpnvaKlwJoDx6PiSN821uTpVI0y0GypVWc"]
-OPENAI_API_KEY = os.environ["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"]
+DISCORD_BOT_TOKEN = os.environ["DISCORD_BOT_TOKEN"]
+OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 
 MODEL_NAME = "gpt-5-mini"
 
