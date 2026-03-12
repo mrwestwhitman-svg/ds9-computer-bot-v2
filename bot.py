@@ -198,15 +198,14 @@ async def computer(interaction: discord.Interaction, question: str):
         )
         return
 
-    channel_name = channel.name.lower()
+channel_name = channel.name.lower()
 
-    if channel_name not in ALLOWED_CHANNELS:
-
-        await interaction.response.send_message(
-            "Computer access is not available at this terminal.",
-            ephemeral=True
-        )
-        return
+if channel_name not in ALLOWED_CHANNELS:
+    await interaction.response.send_message(
+        f"Computer access is not available at this terminal. Debug channel name: {channel_name}",
+        ephemeral=True
+    )
+    return
 
     await interaction.response.defer()
 
