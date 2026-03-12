@@ -182,48 +182,40 @@ async def on_ready():
     name="computer",
     description="Access the Deep Space 9 computer"
 )
-
 @app_commands.describe(
     question="Enter computer query"
 )
-
 async def computer(interaction: discord.Interaction, question: str):
-
     await interaction.response.defer()
 
     channel = interaction.channel
 
-        if channel is None or not hasattr(channel, "name"):
-        await interaction.response.send_message(
-            "Computer terminal offline. Debug channel name: ...",
+    if channel is None or not hasattr(channel, "name"):
+        await interaction.followup.send(
+            "Computer terminal offline.",
             ephemeral=True
         )
         return
 
-# channel_name = channel.name.lower()
+    channel_name = channel.name.lower()
 
-# if channel_name not in ALLOWED_CHANNELS:
-#     await interaction.response.send_message(
-#         "Computer access is not available at this terminal.",
-#         ephemeral=True
-#     )
-#     return
-
-    await interaction.response.defer()
+    if channel_name not in ALLOWED_CHANNELS:
+        await interaction.followup.send(
+            f"Computer access is not available at this terminal. Debug channel name: {channel_name}",
+            ephemeral=True
+        )
+        return
 
     try:
-
         reply = query_ds9_ai(question, channel_name)
-
         reply = add_history_note(reply)
-
+        await interaction.followup.send(reply)
     except Exception as e:
-
         print("AI error:", e)
-
-        reply = fallback_response(question)
-
-    await interaction.followup.send(reply)
+        await interaction.followup.send(
+            f"Computer error: {e}",
+            ephemeral=True
+        )
 
 # =============================
 # START BOT
