@@ -189,6 +189,8 @@ async def on_ready():
 
 async def computer(interaction: discord.Interaction, question: str):
 
+    await interaction.response.defer()
+
     channel = interaction.channel
 
         if channel is None or not hasattr(channel, "name"):
