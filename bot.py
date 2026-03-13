@@ -12,7 +12,7 @@ from openai import OpenAI
 DISCORD_BOT_TOKEN = os.environ["DISCORD_BOT_TOKEN"]
 OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 
-MODEL_NAME = "gpt-5-mini"
+MODEL_NAME = "gpt-4.1-mini"
 
 HISTORY_CHANCE = 0.15
 
